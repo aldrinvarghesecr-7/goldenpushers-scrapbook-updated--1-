@@ -1,0 +1,16 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/", "destination": "/goldenpushers/index.html" },
+    { "source": "/about", "destination": "/goldenpushers/about.html" },
+    { "source": "/work", "destination": "/goldenpushers/work.html" },
+    { "source": "/team", "destination": "/goldenpushers/team.html" },
+    { "source": "/contact", "destination": "/goldenpushers/contact.html" },
+    { "source": "/work-:slug", "destination": "/goldenpushers/work-:slug.html" },
+    { "source": "/css/(.*)", "destination": "/goldenpushers/css/$1" },
+    { "source": "/js/(.*)", "destination": "/goldenpushers/js/$1" },
+    { "source": "/assets/(.*)", "destination": "/goldenpushers/assets/$1" },
+    { "source": "/(.*)", "destination": "/goldenpushers/$1" }
+  ]
+}
