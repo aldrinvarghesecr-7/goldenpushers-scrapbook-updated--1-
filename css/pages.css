@@ -1,0 +1,321 @@
+/* ============================================================
+   SHARED PAGE HEADER
+   ============================================================ */
+.page-wrap { padding: 8rem 0 6rem; min-height: 100vh; }
+.page-hero { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
+.page-hero h1 {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: clamp(48px, 8vw, 96px); line-height: 0.95; letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+.page-hero p { font-size: 15px; color: var(--color-text-secondary); line-height: 1.85; }
+
+/* ============================================================
+   ABOUT — accordion services
+   ============================================================ */
+.services-wrap { max-width: 760px; margin: 6rem auto 0; padding: 0 2rem; }
+.accordion { border-top: 1px solid rgba(200,194,184,0.5); }
+.accordion-item { border-bottom: 1px solid rgba(200,194,184,0.5); }
+.accordion-trigger {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 1.8rem 0; text-align: left; gap: 1.5rem;
+}
+.accordion-trigger-left { display: flex; align-items: center; gap: 1.5rem; }
+.accordion-trigger .idx { font-size: 12px; letter-spacing: 0.2em; color: var(--color-text-muted); }
+.accordion-trigger.is-open .idx { color: var(--color-copper); }
+.accordion-trigger h3 {
+  font-family: var(--font-display); font-weight: 300; color: var(--color-olive);
+  font-size: clamp(20px, 3vw, 34px); letter-spacing: -0.01em; transition: color 0.3s ease;
+}
+.accordion-trigger.is-open h3 { color: var(--color-charcoal); }
+.accordion-trigger-right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
+.accordion-trigger .count { font-size: 11px; letter-spacing: 0.05em; color: var(--color-text-muted); }
+@media (max-width: 600px) { .accordion-trigger .count { display: none; } }
+.accordion-trigger .chev { color: var(--color-copper); transition: transform 0.3s ease; }
+.accordion-trigger.is-open .chev { transform: rotate(180deg); }
+.accordion-panel {
+  display: grid; grid-template-rows: 0fr;
+  transition: grid-template-rows 0.6s var(--ease-flow);
+}
+.accordion-panel.is-open { grid-template-rows: 1fr; }
+.accordion-panel-inner { overflow: hidden; }
+.service-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem 2rem;
+  padding: 0 0 2.5rem 4.3rem;
+}
+@media (max-width: 600px) { .service-grid { grid-template-columns: 1fr; padding-left: 0; } }
+.service-item { display: flex; align-items: flex-start; gap: 0.7rem; }
+.service-item::before { content: ''; width: 2px; height: 16px; background: var(--color-border); margin-top: 3px; flex-shrink: 0; }
+.service-item .t { font-size: 14px; color: var(--color-charcoal); }
+.service-item .d { font-size: 12px; color: var(--color-text-muted); margin-top: 2px; }
+
+.about-quote { max-width: 760px; margin: 8rem auto 0; padding: 0 2rem; text-align: center; }
+.about-quote h2 {
+  font-family: var(--font-display); font-weight: 300; font-style: italic;
+  font-size: clamp(26px, 4vw, 42px); line-height: 1.3; color: var(--color-olive);
+}
+
+/* ============================================================
+   TEAM PAGE / SECTION - Scrapbook Corkboard
+   Polaroid photos pinned at hand-set angles with washi tape,
+   on a warm kraft-paper backdrop. Click a photo to flip it and
+   read the note on the back.
+   ============================================================ */
+.scrapbook {
+  position: relative;
+  margin-top: 4rem;
+  padding: 4rem 1.5rem 3rem;
+  background-color: #E4D9BF;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% 0%, rgba(255,255,255,0.35), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 100% 100%, rgba(0,0,0,0.06), transparent 60%);
+  border-radius: 4px;
+  overflow: hidden;
+}
+/* subtle paper-grain texture */
+.scrapbook::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.scrapbook-note {
+  position: relative;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: var(--color-olive);
+  margin-bottom: 2.5rem;
+  transform: rotate(-1deg);
+}
+
+.scrapbook-board {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.2rem 1.6rem;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.polaroid {
+  --rot: 0deg;
+  --tape-rot: 0deg;
+  --lift: 0px;
+  position: relative;
+  width: 200px;
+  perspective: 1400px;
+  margin-top: var(--lift);
+  transform: rotate(var(--rot));
+  transition: transform 0.35s ease, z-index 0s;
+}
+.polaroid:hover, .polaroid:focus-within { transform: rotate(0deg) translateY(-6px); z-index: 5; }
+
+.polaroid-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.polaroid.is-flipped .polaroid-inner { transform: rotateY(180deg); }
+.polaroid:not(.is-flipped) .polaroid-back { pointer-events: none; }
+.polaroid.is-flipped .polaroid-front { pointer-events: none; }
+
+.polaroid-face {
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.polaroid-front {
+  position: relative;
+  background: #FDFBF6;
+  padding: 10px 10px 34px;
+  box-shadow: 0 10px 22px rgba(30,26,18,0.22), 0 2px 5px rgba(30,26,18,0.12);
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  font: inherit;
+  display: block;
+}
+.polaroid-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  background: #FBF6E8;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 27px, rgba(57,70,58,0.15) 27px 28px);
+  box-shadow: 0 10px 22px rgba(30,26,18,0.22), 0 2px 5px rgba(30,26,18,0.12);
+  padding: 1.5rem 1.1rem 1rem;
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  font: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.tape {
+  position: absolute;
+  top: -13px; left: 50%;
+  width: 64px; height: 24px;
+  transform: translateX(-50%) rotate(var(--tape-rot));
+  background: linear-gradient(120deg, rgba(166,107,69,0.55), rgba(166,107,69,0.38));
+  box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+  z-index: 3;
+  opacity: 0.9;
+}
+.tape::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(115deg, transparent 0 3px, rgba(255,255,255,0.22) 3px 4px);
+}
+
+.polaroid-photo {
+  position: relative;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background: var(--color-charcoal);
+}
+.polaroid-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: sepia(0.12) saturate(0.92) contrast(1.03);
+}
+
+.polaroid-caption {
+  margin-top: 12px;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  line-height: 1.15;
+  color: #2A2620;
+}
+.polaroid-caption .role {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.polaroid-pin {
+  position: absolute;
+  bottom: 8px; right: 12px;
+  font-size: 10px;
+  color: var(--color-copper);
+  font-family: var(--font-sans);
+  letter-spacing: 0.05em;
+  opacity: 0.55;
+}
+
+.polaroid-back .focus-tag {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+}
+.polaroid-back .handwritten-note {
+  margin-top: 0.6rem;
+  font-family: 'Caveat', cursive;
+  font-size: 19px;
+  line-height: 1.4;
+  color: #2A2620;
+  flex: 1;
+}
+.polaroid-back .flip-hint {
+  align-self: flex-end;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 640px) {
+  .scrapbook-board { gap: 2.6rem 1rem; }
+  .polaroid { width: 42vw; max-width: 168px; }
+  .polaroid:hover { transform: rotate(var(--rot)); } /* no hover-lift on touch widths */
+  .polaroid-caption { font-size: 19px; }
+}
+
+/* ============================================================
+   WORK PAGE — masonry grid + filters
+   ============================================================ */
+.work-header { text-align: center; padding: 7rem 0 3rem; }
+.work-header h1 { font-family: var(--font-display); font-weight: 300; font-size: clamp(44px, 8vw, 88px); }
+.work-header p { margin-top: 1rem; font-size: 16px; letter-spacing: 0.1em; color: var(--color-text-secondary); }
+
+.work-filters { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+.work-filters button {
+  font-size: 13px; letter-spacing: 0.1em; padding-bottom: 0.5rem;
+  border-bottom: 2px solid transparent; color: var(--color-text-secondary); transition: all 0.3s ease;
+}
+.work-filters button.is-active { border-color: var(--color-copper); color: var(--color-copper); }
+.work-filters button:hover { color: var(--color-charcoal); }
+
+.masonry {
+  columns: 3 260px; column-gap: 1.5rem;
+  max-width: 1400px; margin: 0 auto; padding: 0 2rem;
+}
+@media (max-width: 700px) { .masonry { columns: 1 260px; } }
+.masonry-item { break-inside: avoid; margin-bottom: 1.5rem; }
+.masonry-card {
+  position: relative; display: block; overflow: hidden; border-radius: 4px; cursor: pointer;
+}
+.masonry-card img { width: 100%; display: block; transition: transform 0.7s cubic-bezier(0.23,1,0.32,1); }
+.masonry-card:hover img { transform: scale(1.04); }
+.masonry-card::after {
+  content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.1);
+  transition: background 0.3s ease;
+}
+.masonry-card:hover::after { background: rgba(0,0,0,0.55); }
+.masonry-caption {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center; padding: 1.5rem;
+  opacity: 0; transition: opacity 0.3s ease; z-index: 2; color: #fff;
+}
+.masonry-card:hover .masonry-caption { opacity: 1; }
+.masonry-caption .tag { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color-copper); margin-bottom: 0.5rem; }
+.masonry-caption h3 { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.masonry-caption .rule { width: 32px; height: 1px; background: rgba(166,107,69,0.5); margin: 1rem 0; }
+.masonry-caption .desc { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+
+/* Work detail page */
+.work-detail-hero { position: relative; height: 85vh; }
+.work-detail-hero img { width: 100%; height: 100%; object-fit: cover; }
+.work-detail-hero::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7) 60%, #000);
+}
+.work-detail-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem; z-index: 2; color: #fff; }
+.work-detail-caption .back { font-size: 13px; letter-spacing: 0.1em; color: rgba(255,255,255,0.8); }
+.work-detail-caption .back:hover { color: var(--color-copper); }
+.work-detail-caption h1 { font-family: var(--font-display); font-size: clamp(36px,7vw,72px); line-height: 1; margin-top: 1rem; }
+.work-detail-caption .meta { color: var(--color-copper); font-size: 1.4rem; margin-top: 0.5rem; }
+.work-detail-body { max-width: 720px; margin: 0 auto; padding: 5rem 2rem; }
+.work-detail-body p { font-size: 18px; color: var(--color-text-secondary); line-height: 1.8; }
+.work-detail-strip { display: flex; gap: 1.2rem; overflow-x: auto; padding: 0 2rem 6rem; scroll-snap-type: x mandatory; }
+.work-detail-strip img { flex-shrink: 0; width: 90vw; max-width: 620px; border-radius: 10px; scroll-snap-align: center; }
+
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
+.contact-page { max-width: 560px; margin: 0 auto; padding: 9rem 2rem 6rem; }
+.contact-page h1 { font-family: var(--font-display); font-weight: 300; font-size: clamp(48px, 8vw, 84px); text-align: center; margin-bottom: 4rem; }
+.contact-page .field { border-bottom: 1px solid rgba(30,30,30,0.15); padding-bottom: 1.2rem; margin-top: 3rem; }
+.contact-page .field:first-of-type { margin-top: 0; }
+.contact-page label { display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 0.6rem; }
+.contact-page input, .contact-page textarea {
+  width: 100%; background: transparent; border: none; outline: none;
+  font-size: 1.4rem; font-family: var(--font-sans); color: var(--color-charcoal);
+}
+.contact-page input::placeholder, .contact-page textarea::placeholder { color: var(--color-text-muted); }
+.contact-page textarea { resize: vertical; }
+.contact-page .submit-row { margin-top: 3rem; }
+.contact-success { text-align: center; margin-top: 2rem; color: var(--color-copper); font-size: 13px; letter-spacing: 0.05em; display: none; }
+.contact-success.is-visible { display: block; }

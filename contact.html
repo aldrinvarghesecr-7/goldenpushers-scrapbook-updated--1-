@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Golden Pushers Production</title>
+<meta name="description" content="Start a project with Golden Pushers Production.">
+<link rel="icon" href="assets/favicon.ico">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<canvas id="studio-bg-canvas" class="studio-bg-canvas" aria-hidden="true"></canvas>
+
+<nav class="navbar is-scrolled" style="background:rgba(248,244,238,0.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(200,194,184,0.4);mix-blend-mode:normal;">
+  <a href="index.html" class="navbar-logo" style="color:#39463A;" aria-label="Golden Pushers Production — home">
+    <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="38" height="38" stroke="#39463A" stroke-width="0.75" opacity="0.3"/>
+      <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" fill="#39463A" style="font-family:serif;font-size:14px;font-weight:600;">GP</text>
+      <line x1="8" y1="34" x2="32" y2="34" stroke="#A66B45" stroke-width="0.75"/>
+    </svg>
+  </a>
+  <div class="navbar-links">
+    <a href="index.html#ethos" style="color:#6F6F6F;">Studio</a>
+    <a href="about.html" style="color:#6F6F6F;">About</a>
+    <a href="work.html" style="color:#6F6F6F;">Work</a>
+    <a href="team.html" style="color:#6F6F6F;">Team</a>
+    <a href="contact.html" style="color:#39463A;">Enquire</a>
+  </div>
+  <button class="navbar-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-drawer">
+    <span style="background:#39463A;"></span><span style="background:#39463A;"></span><span style="background:#39463A;"></span>
+  </button>
+</nav>
+
+<div class="mobile-drawer" id="mobile-drawer">
+  <a href="index.html#ethos">Studio</a>
+  <a href="about.html">About</a>
+  <a href="work.html">Work</a>
+  <a href="team.html">Team</a>
+  <a href="contact.html">Enquire</a>
+</div>
+
+<main id="main">
+<section class="enquire" style="min-height:100vh;padding-top:9rem;">
+  <div class="enquire-inner">
+    <div class="enquire-grid">
+      <div class="enquire-left reveal">
+        <h2><span class="font-caveat-script">Let's</span> <em>Work</em><br><span class="font-caveat-script">Together.</span></h2>
+        <p class="lead">Tell us about your project. We'll get back to you within 24 hours to discuss how we can engineer your visual story.</p>
+        <div class="enquire-info">
+          <p>Golden Pushers Production</p>
+          <p style="margin-bottom:1rem;">Kerala, India</p>
+          <a href="mailto:goldenpushers@gmail.com">goldenpushers@gmail.com</a><br>
+          <a href="tel:+918086560664" style="color:#6F6F6F;">+91 80865 60664</a>
+        </div>
+      </div>
+
+      <div class="enquire-form-panel reveal reveal-delay-1">
+        <form class="enquire-form" novalidate>
+          <div class="honeypot-field" aria-hidden="true">
+            <label for="c-company">Company website</label>
+            <input type="text" id="c-company" name="company_website" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="c-name">Name *</label>
+            <input required type="text" id="c-name" name="name" placeholder="Your full name" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="c-email">Email Address *</label>
+            <input required type="email" id="c-email" name="email" placeholder="your@email.com" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="c-phone">Phone</label>
+            <input type="tel" id="c-phone" name="phone" placeholder="+91 00000 00000" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="c-type">Project Type *</label>
+            <select required id="c-type" name="type">
+              <option value="" disabled selected>Select project type</option>
+              <option>Commercial Films</option>
+              <option>Brand Campaigns</option>
+              <option>Product Photography</option>
+              <option>Music Videos</option>
+              <option>Wedding Films</option>
+              <option>Corporate Films</option>
+              <option>Social Media Content</option>
+              <option>Creative Direction</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="c-message">Tell Us About Your Project *</label>
+            <textarea required id="c-message" name="message" rows="4" placeholder="Describe your vision, timeline, and any references you have in mind..."></textarea>
+          </div>
+          <div class="form-error" role="alert"></div>
+          <button type="submit" class="btn-copper"><span>Send Enquiry</span> →</button>
+        </form>
+      </div>
+
+      <div class="enquire-success">
+        <div class="check">✓</div>
+        <h2>Message <em>Received.</em></h2>
+        <div class="rule"></div>
+        <p>We'll review your project and be in touch within 24 hours. We look forward to building something lasting together.</p>
+        <button type="button">Send another enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-bottom" style="border-top:none;padding-top:0;">
+      <p style="font-family:var(--font-display);font-style:italic;font-size:15px;color:#6F6F6F;">Stories Engineered To Last.</p>
+      <span>© 2026 Golden Pushers Production</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/background-animation.js"></script>
+<script src="js/main.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

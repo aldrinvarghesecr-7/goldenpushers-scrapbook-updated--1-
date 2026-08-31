@@ -6,6 +6,7 @@
     { "source": "/work", "destination": "/work.html" },
     { "source": "/team", "destination": "/team.html" },
     { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/work/:slug", "destination": "/work-:slug.html" }
+    { "source": "/work/:slug", "destination": "/work-:slug.html" },
+    { "source": "/work-:slug", "destination": "/work-:slug.html" }
   ]
 }
