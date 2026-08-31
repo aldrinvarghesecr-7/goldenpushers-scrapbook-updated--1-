@@ -51,10 +51,22 @@ body.page-is-leaving {
   inset: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0;
+  z-index: 90;
   pointer-events: none;
-  opacity: 0.92;
+  mix-blend-mode: multiply;
+  opacity: 0.95;
   transition: opacity 0.8s var(--ease-flow);
+}
+
+.enquire-script,
+.font-caveat-script {
+  font-family: 'Caveat', cursive !important;
+  color: var(--color-copper) !important;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  display: inline-block;
+  transform: rotate(-2deg);
 }
 
 #main {

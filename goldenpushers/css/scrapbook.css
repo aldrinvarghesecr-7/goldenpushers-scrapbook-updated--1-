@@ -321,6 +321,16 @@ section, .page-wrap, .work-detail-hero { scroll-margin-top: 92px; }
 
 /* Contact / shared forms */
 .enquire-left h2 { color: var(--ink) !important; }
+.enquire-left h2 .font-caveat-script,
+.enquire-left h2 .enquire-script,
+.enquire-script {
+  font-family: 'Caveat', cursive !important;
+  color: var(--terracotta) !important;
+  font-weight: 600;
+  font-style: normal;
+  display: inline-block;
+  transform: rotate(-2deg);
+}
 .enquire-left .lead, .enquire-info p, .enquire-info a { color: var(--ink-soft) !important; }
 .enquire-info { border-top: 1px dashed var(--line); }
 .enquire-form-panel { position: relative; background: var(--paper-light) !important; border: 1px solid var(--line) !important; box-shadow: var(--shadow); transform: rotate(1deg); }
